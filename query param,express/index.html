@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hitesh Garg Site</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        function sendRequest() {
+            axios.post("http://localhost:3000/sum", {
+                a: document.getElementById("a").value,
+                b: document.getElementById("b").value
+            })
+            .then(response => {
+                document.getElementById("result").innerText = "Sum: " + response.data.answer;
+            })
+            .catch(error => {
+                document.getElementById("result").innerText = "Error: " + (error.response ? error.response.data.error : "Server error");
+            });
+        }
+    </script>
+</head>
+<body>
+    <h2>Simple Sum Calculator</h2>
+    <input id="a" type="text" placeholder="First value">
+    <input id="b" type="text" placeholder="Second value">
+    <button onclick="sendRequest()">Calculate Sum</button>
+    <p id="result"></p>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Hitesh's Todo list</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+  <h1>
+    To Do List
+  </h1> 
+
+  <div id ="todocontainer"> </div>
+  <div> 
+    <input type="text" placeholder=" Add your to do here"></input>
+    <button onclick="addTodo()">Add Todo</button>
+  </div>
+  
+  <script >
+    let ctr=1; 
+    function deleteTodo(index)
+    {
+      const el=document.getElementById("todo-"+index);
+      el.parentNode.removeChild(el);
+    }
+    function addTodo()
+    {
+  const value=document.querySelector("input").value;
+  const spanel=document.createElement("span");
+  const buttonel=document.createElement("button");
+    spanel.innerHTML=value;
+    buttonel.innerHTML="Delete";
+    const newdivel =document.createElement("div");
+    newdivel.setAttribute("id","todo-"+ctr);
+      newdivel.appendChild(spanel);
+      newdivel.appendChild(buttonel);
+      // newdivel.innerHTML="<div>" +value + '</div> <button onclick="    deleteTodo  ('+ctr+')">delete</button>';
+    ctr=ctr+1;   
+      document.querySelector("#todocontainer").appendChild(newdivel);
+    }
+  </script>
+</body> 
+
+</html>
